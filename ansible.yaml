@@ -1,12 +1,12 @@
 - hosts: localhost
   become: yes
   tasks:
-    - name: Task -1 Connect to cluster
-      shell: gcloud container clusters get-credentials priv-cluster --zone us-central1-c --project jehad-iti
+    - name: first task cluster connection 
+      shell: gcloud container clusters get-credentials cluster-pv --zone us-east4-c --project jehad-iti
 
-    - name: Task -2 Create Jenkins namespace
+    - name: second task  namespace creation
       shell: kubectl create namespace jenkins
 
-    - name: Task -3 Deploying jenkins & loadbalancer servies
+    - name: third task deploy jenkins & loadbalancer servies
       command: kubectl apply -f /home/jehad/test/jenkins/
 
