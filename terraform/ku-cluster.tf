@@ -1,7 +1,7 @@
 
-resource "google_container_cluster" "priv-cluster" {
-  name = "priv-cluster"
-  location = "us-central1-c"
+resource "google_container_cluster" "cluster-pv" {
+  name = "cluster-pv"
+  location = "us-east4-c"
    
   remove_default_node_pool = true
   initial_node_count = 1
@@ -10,8 +10,8 @@ resource "google_container_cluster" "priv-cluster" {
   
   master_authorized_networks_config {
     cidr_blocks {
-      cidr_block   = "10.0.1.0/24"
-      display_name = "managment-cidr-range"
+      cidr_block   = "10.0.5.0/24"
+      display_name = "managment-cidr"
     }
   }
     addons_config {
@@ -21,7 +21,7 @@ resource "google_container_cluster" "priv-cluster" {
     horizontal_pod_autoscaling {
       disabled = false
     }
-
+    
   }
 
   release_channel {
@@ -32,8 +32,8 @@ resource "google_container_cluster" "priv-cluster" {
     workload_pool = "jehad-iti.svc.id.goog"
   }
   ip_allocation_policy {
-    cluster_secondary_range_name = "pod-range"
-    services_secondary_range_name = "service-range"
+     cluster_secondary_range_name = "pod-range"
+     services_secondary_range_name = "service-range"
   }
 
   private_cluster_config {
@@ -49,10 +49,10 @@ resource "google_container_cluster" "priv-cluster" {
   }
 }
 
-resource "google_container_node_pool" "nodepool" {
-  name = "nodepool"
-  location = "us-central1-a"
-  cluster = google_container_cluster.priv-cluster.id
+resource "google_container_node_pool" "node" {
+  name = "node"
+  location = "us-east4-a"
+  cluster = google_container_cluster.cluster-pv.id
   node_count = 1
    management {
     auto_repair = true
