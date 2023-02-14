@@ -1,11 +1,11 @@
-resource "google_compute_instance" "private-vm" {
-  name = "private-vm"
+resource "google_compute_instance" "my-vm" {
+  name = "my-vm"
   machine_type = "e2-medium"
-  zone = "us-central1-c"
+  zone = "us-east4-c"
 
   depends_on = [
-    google_container_cluster.priv-cluster
-   , google_container_node_pool.nodepool
+    google_container_cluster.cluster-pv
+   , google_container_node_pool.node
   ]
   
   metadata_startup_script = "${file("./installations.sh")}"
@@ -26,12 +26,11 @@ resource "google_compute_instance" "private-vm" {
     network = google_compute_network.my-vpc.id
     subnetwork = google_compute_subnetwork.management_subnet.id
     access_config {
-      nat_ip = google_compute_address.instance_external_ip.address
+      nat_ip = google_compute_address.external_ip.address
     }
   }
 }
 
-
-resource "google_compute_address" "instance_external_ip" {
-  name = "instance-external-ip"
+resource "google_compute_address" "external_ip" {
+  name = "external-ip"
 }
