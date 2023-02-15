@@ -56,4 +56,4 @@ $ kubectl exec --namespace jenkins -it svc/jenkins-service -c jenkins -- /bin/ca
 ```
 #### Now we are ready to use Jenkins
 
-### You can check CI/CD: <a href="https://github.com/jehad215/Jehad-app.git" target="_blank">Google</a>
+### Then check: <a href="https://github.com/jehad215/Jehad-app.git" target="_blank">CI/CD in Jenkins</a>
