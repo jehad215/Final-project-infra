@@ -82,6 +82,5 @@ spec:
   selector:
     app: jenkins-server
   ports:
-      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
     - port: 8080
       targetPort: 8080  

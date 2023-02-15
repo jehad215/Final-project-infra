@@ -1,6 +1,3 @@
-
-
-
 provider "google" {
   project = "jehad-iti"
   region = "us-east4"
