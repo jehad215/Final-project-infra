@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: seada98/jenkins-devops
+          image: jehad21/jenkins-devops
           ports:
             - name: httpport
               containerPort: 8080
