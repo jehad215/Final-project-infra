@@ -47,6 +47,5 @@ kubectl get all -n jenkins
 ```bash
 $ kubectl exec --namespace jenkins -it svc/jenkins-service -c jenkins -- /bin/cat /var/jenkins_home/secrets/initialAdminPassword && echo
 ```
-#### Now we are ready to use Jenkins
 
 ### You can check Part two: <a href="https://github.com/jehad215/Final-project-app.git" target="_blank">CI/CD in Jenkins</a>
